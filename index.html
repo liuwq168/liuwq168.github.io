@@ -84,15 +84,27 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Attention-Is-All-You-Need"><a href="#Attention-Is-All-You-Need" class="headerlink" title="Attention Is All You Need"></a>Attention Is All You Need</h1><p><img src="/2020/03/23/test/attention_is_all_you_need.png" alt="attention_is_all_you_need"><br><img src="/2020/03/23/test/abstract.png" alt="attention_is_all_you_need"></p>
+        <h1 id="Attention-Is-All-You-Need"><a href="#Attention-Is-All-You-Need" class="headerlink" title="Attention Is All You Need"></a>Attention Is All You Need</h1><p><img src="/2020/03/23/test/attention_is_all_you_need.png" alt="attention_is_all_you_need"></p>
 <hr>
-<p>统治的序列转换模型包含一个编码器与一个解码器，是基于复杂的时序或者卷积神经网络构建的。最有表现的模型也是使用注意力机制串联编码器与解码器。我们提出一个简单的网络结构，Transformer，完全基于注意力机制，完全省去了时序与卷积。基于两个机器翻译实验表明该模型在性能上更优，同时可以并行执行与需要花费更少的时间在训练上。我们的模型在2014年WMT的英德翻译任务中达到28.4 BLEU，超过了现有的最佳结果，包括总效果，超过2 BLEU。在WMT 2014英法翻译任务中，我们的模型建立了一个新的单模型的最先进的41.8 BLEU评分，在8个gpu上进行3.5天的训练，在文献最有模型中只是一小部分的训练花销。我们证明了Transformer对于其他任务具有良好的泛化能力，通过将其成功地应用于大而有限的英语领域的解析训练数据。</p>
+<h2 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h2><p>The dominant sequence transduction models are based on complex recurrent or convolutional neural networks that include an encoder and a decoder. The best performing models also connect the encoder and decoder through an attention mechanism. We propose a new simple network architecture, the Transformer, based solely on attention mechanisms, dispensing with recurrence and convolutions entirely. Experiments on two machine translation tasks show these models to be superior in quality while being more parallelizable and requiring significantly less time to train. Our model achieves 28.4 BLEU on the WMT 2014 Englishto-German translation task, improving over the existing best results, including ensembles, by over 2 BLEU. On the WMT 2014 English-to-French translation task, our model establishes a new single-model state-of-the-art BLEU score of 41.8 after training for 3.5 days on eight GPUs, a small fraction of the training costs of the best models from the literature. We show that the Transformer generalizes well to other tasks by applying it successfully to English constituency parsing both with large and limited training data.</p>
+<p>显性的序列转换模型包含一个编码器与一个解码器，是基于复杂的时序或者卷积神经网络构建的。最有表现的模型也是使用注意力机制串联编码器与解码器。我们提出一个简单的网络结构，Transformer，完全基于注意力机制，完全省去了时序与卷积。基于两个机器翻译实验表明该模型在性能上更优，同时可以并行执行与需要花费更少的时间在训练上。我们的模型在2014年WMT的英德翻译任务中达到28.4 BLEU，超过了现有的最佳结果，包括总效果，超过2 BLEU。在WMT 2014英法翻译任务中，我们的模型建立了一个新的单模型的最先进的41.8 BLEU评分，在8个gpu上进行3.5天的训练，在文献最有模型中只是一小部分的训练花销。我们证明了Transformer对于其他任务具有良好的泛化能力，通过将其成功地应用于大而有限的英语领域的解析训练数据。</p>
+<hr>
+<hr>
+<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>Recurrent neural networks, long short-term memory [13] and gated recurrent [7] neural networks<br>in particular, have been firmly established as state of the art approaches in sequence modeling and<br>transduction problems such as language modeling and machine translation [35, 2, 5]. Numerous<br>efforts have since continued to push the boundaries of recurrent language models and encoder-decoder<br>architectures [38, 24, 15].</p>
+<p>Recurrent models typically factor computation along the symbol positions of the input and output<br>sequences. Aligning the positions to steps in computation time, they generate a sequence of hidden<br>states ht, as a function of the previous hidden state ht−1 and the input for position t. This inherently<br>sequential nature precludes parallelization within training examples, which becomes critical at longer<br>sequence lengths, as memory constraints limit batching across examples. Recent work has achieved<br>significant improvements in computational efficiency through factorization tricks [21] and conditional<br>computation [32], while also improving model performance in case of the latter. The fundamental<br>constraint of sequential computation, however, remains.</p>
+<p>Attention mechanisms have become an integral part of compelling sequence modeling and transduction models in various tasks, allowing modeling of dependencies without regard to their distance in<br>the input or output sequences [2, 19]. In all but a few cases [27], however, such attention mechanisms<br>are used in conjunction with a recurrent network.</p>
+<p>In this work we propose the Transformer, a model architecture eschewing recurrence and instead<br>relying entirely on an attention mechanism to draw global dependencies between input and output.<br>The Transformer allows for significantly more parallelization and can reach a new state of the art in<br>translation quality after being trained for as little as twelve hours on eight P100 GPUs.</p>
+<p>1介绍</p>
+<p>时序神经网络，特别是长短时记忆[13]和门控时序[7]神经网络，已经作为最先进的序列建模和转换方法如语言建模和机器翻译等得到了坚实的建立[35,2,5]。从那以后，无数的努力继续推动循环语言模型和编解码器架构的发展[38,24,15]。</p>
+<p>时序模型通常沿着输入和输出序列的符号位置进行因子计算。调整位置步骤计算时间,他们生成一个隐藏的状态序列ht,作为前序隐藏状态ht-1与输入位置t的函数。这个固有的顺序阻碍了训练实例的并行化,在长序列的长度变得非常关键,因为内存约束限制批处理的例子。最近的工作已经通过因子分解技巧[21]和条件计算[32]在计算效率方面取得了显著的改进，同时也提高了针对后者的模型性能。基本的序列计算约束，然而，仍然存在。</p>
+<p>在各种任务中，注意力机制已经成为引人注目的序列建模和转换模型的一个组成部分，允许对依赖项进行建模，而不考虑它们在输入或输出序列中的距离[2,19]。然而，除了少数情况外[27]，这种注意机制都与一个时序网络一起使用。</p>
+<p>在这项工作中，我们提出了Transformer，一种避免时序的模型架构，而是完全依赖于一种注意力机制来描述输入和输出之间的全局依赖关系。<br>Transformer允许更多的并行化，并且可以在8个P100 gpu上进行最少12个小时的训练，从而在翻译质量方面达到一个新的水平。</p>
 <hr>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/03/23/test/" data-id="ck85xvc8h00013pjfqo4doa0x" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/03/23/test/" data-id="ck85yqt030002dzjfl2w64eo7" class="article-share-link">Share</a>
       
       
     </footer>
@@ -129,7 +141,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/03/23/Attention-is-all-you-need/" data-id="ck85xvc8b00003pjf4maua0ta" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/03/23/Attention-is-all-you-need/" data-id="ck85yqszv0000dzjfnygi04tx" class="article-share-link">Share</a>
       
       
     </footer>
@@ -173,7 +185,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/03/23/更新博客/" data-id="ck85xvc8o00043pjfx1knxpu4" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/03/23/更新博客/" data-id="ck85yqt050004dzjfwgwzxh3k" class="article-share-link">Share</a>
       
       
     </footer>
@@ -209,7 +221,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/24/wendy/" data-id="ck85xvc8m00033pjf9r5bea8g" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/04/24/wendy/" data-id="ck85yqt040003dzjff3mvhbov" class="article-share-link">Share</a>
       
       
     </footer>
@@ -254,7 +266,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/24/hello-world/" data-id="ck85xvc8j00023pjfdtss9zpx" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/04/24/hello-world/" data-id="ck85yqt010001dzjfj10e15um" class="article-share-link">Share</a>
       
       
     </footer>
