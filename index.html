@@ -62,10 +62,10 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-test" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-attention的文章解读" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2020/03/23/test/" class="article-date">
-  <time datetime="2020-03-23T13:48:53.000Z" itemprop="datePublished">2020-03-23</time>
+    <a href="/2020/03/24/attention的文章解读/" class="article-date">
+  <time datetime="2020-03-24T14:03:58.000Z" itemprop="datePublished">2020-03-24</time>
 </a>
     
   </div>
@@ -76,7 +76,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/23/test/">test</a>
+      <a class="article-title" href="/2020/03/24/attention的文章解读/">attention的文章解读</a>
     </h1>
   
 
@@ -84,7 +84,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Attention-Is-All-You-Need"><a href="#Attention-Is-All-You-Need" class="headerlink" title="Attention Is All You Need"></a>Attention Is All You Need</h1><p><img src="/2020/03/23/test/attention_is_all_you_need.png" alt="attention_is_all_you_need"></p>
+        <h1 id="Attention-Is-All-You-Need"><a href="#Attention-Is-All-You-Need" class="headerlink" title="Attention Is All You Need"></a>Attention Is All You Need</h1><p><img src="/2020/03/24/attention的文章解读/attention_is_all_you_need.png" alt="attention_is_all_you_need"></p>
 <hr>
 <h2 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h2><p>The dominant sequence transduction models are based on complex recurrent or convolutional neural networks that include an encoder and a decoder. The best performing models also connect the encoder and decoder through an attention mechanism. We propose a new simple network architecture, the Transformer, based solely on attention mechanisms, dispensing with recurrence and convolutions entirely. Experiments on two machine translation tasks show these models to be superior in quality while being more parallelizable and requiring significantly less time to train. Our model achieves 28.4 BLEU on the WMT 2014 Englishto-German translation task, improving over the existing best results, including ensembles, by over 2 BLEU. On the WMT 2014 English-to-French translation task, our model establishes a new single-model state-of-the-art BLEU score of 41.8 after training for 3.5 days on eight GPUs, a small fraction of the training costs of the best models from the literature. We show that the Transformer generalizes well to other tasks by applying it successfully to English constituency parsing both with large and limited training data.</p>
 <p>显性的序列转换模型包含一个编码器与一个解码器，是基于复杂的时序或者卷积神经网络构建的。最有表现的模型也是使用注意力机制串联编码器与解码器。我们提出一个简单的网络结构，Transformer，完全基于注意力机制，完全省去了时序与卷积。基于两个机器翻译实验表明该模型在性能上更优，同时可以并行执行与需要花费更少的时间在训练上。我们的模型在2014年WMT的英德翻译任务中达到28.4 BLEU，超过了现有的最佳结果，包括总效果，超过2 BLEU。在WMT 2014英法翻译任务中，我们的模型建立了一个新的单模型的最先进的41.8 BLEU评分，在8个gpu上进行3.5天的训练，在文献最有模型中只是一小部分的训练花销。我们证明了Transformer对于其他任务具有良好的泛化能力，通过将其成功地应用于大而有限的英语领域的解析训练数据。</p>
@@ -94,7 +94,6 @@
 <p>Recurrent models typically factor computation along the symbol positions of the input and output sequences. Aligning the positions to steps in computation time, they generate a sequence of hidden states ht, as a function of the previous hidden state ht−1 and the input for position t. This inherently sequential nature precludes parallelization within training examples, which becomes critical at longer sequence lengths, as memory constraints limit batching across examples. Recent work has achieved significant improvements in computational efficiency through factorization tricks [21] and conditional computation [32], while also improving model performance in case of the latter. The fundamental constraint of sequential computation, however, remains.</p>
 <p>Attention mechanisms have become an integral part of compelling sequence modeling and transduction models in various tasks, allowing modeling of dependencies without regard to their distance in the input or output sequences [2, 19]. In all but a few cases [27], however, such attention mechanisms are used in conjunction with a recurrent network.</p>
 <p>In this work we propose the Transformer, a model architecture eschewing recurrence and instead relying entirely on an attention mechanism to draw global dependencies between input and output. The Transformer allows for significantly more parallelization and can reach a new state of the art in translation quality after being trained for as little as twelve hours on eight P100 GPUs.</p>
-<p>1介绍</p>
 <p>时序神经网络，特别是长短时记忆[13]和门控时序[7]神经网络，已经作为最先进的序列建模和转换方法如语言建模和机器翻译等得到了坚实的建立[35,2,5]。从那以后，无数的努力继续推动循环语言模型和编解码器架构的发展[38,24,15]。</p>
 <p>时序模型通常沿着输入和输出序列的符号位置进行因子计算。调整位置步骤计算时间,他们生成一个隐藏的状态序列ht,作为前序隐藏状态ht-1与输入位置t的函数。这个固有的顺序阻碍了训练实例的并行化,在长序列的长度变得非常关键,因为内存约束限制批处理的例子。最近的工作已经通过因子分解技巧[21]和条件计算[32]在计算效率方面取得了显著的改进，同时也提高了针对后者的模型性能。基本的序列计算约束，然而，仍然存在。</p>
 <p>在各种任务中，注意力机制已经成为引人注目的序列建模和转换模型的一个组成部分，允许对依赖项进行建模，而不考虑它们在输入或输出序列中的距离[2,19]。然而，除了少数情况外[27]，这种注意机制都与一个时序网络一起使用。</p>
@@ -104,7 +103,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/03/23/test/" data-id="ck85ywsxo0000fojffr0vxbsi" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/03/24/attention的文章解读/" data-id="ck85z2kcp0000fpjfosmwwq06" class="article-share-link">Share</a>
       
       
     </footer>
@@ -114,10 +113,10 @@
 
 
   
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-构建新博客" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2019/04/24/hello-world/" class="article-date">
-  <time datetime="2019-04-24T14:29:52.340Z" itemprop="datePublished">2019-04-24</time>
+    <a href="/2020/03/24/构建新博客/" class="article-date">
+  <time datetime="2020-03-24T14:03:31.000Z" itemprop="datePublished">2020-03-24</time>
 </a>
     
   </div>
@@ -128,7 +127,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/24/hello-world/">Hello World</a>
+      <a class="article-title" href="/2020/03/24/构建新博客/">构建新博客</a>
     </h1>
   
 
@@ -136,7 +135,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+        <hr>
+<h2 id="title-Hello-World"><a href="#title-Hello-World" class="headerlink" title="title: Hello World"></a>title: Hello World</h2><p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
 <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
 <p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
 <h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
@@ -149,7 +149,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/24/hello-world/" data-id="ck85ywsxt0001fojff3w693ik" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/03/24/构建新博客/" data-id="ck85z2kcu0001fpjfpqnahppi" class="article-share-link">Share</a>
       
       
     </footer>
@@ -177,7 +177,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li></ul>
     </div>
   </div>
 
@@ -190,11 +190,11 @@
       <ul>
         
           <li>
-            <a href="/2020/03/23/test/">test</a>
+            <a href="/2020/03/24/attention的文章解读/">attention的文章解读</a>
           </li>
         
           <li>
-            <a href="/2019/04/24/hello-world/">Hello World</a>
+            <a href="/2020/03/24/构建新博客/">构建新博客</a>
           </li>
         
       </ul>
